@@ -1,0 +1,34 @@
+<div class="base-h">
+    <div class="div-v-1">
+        <div class="in" *ngFor="let in of entryin; index as i" [class.edit-on]="k===i && id==='in'">
+            <div class="div-h-1 in-color">
+                <label>{{toDate(in.date!)|date:'dd/MM/YY'}}</label>
+                <label>{{in.amount|currency:'INR'}}</label>
+                <label>{{in.type}}</label>
+            </div>
+            <div class="div-h-2">
+                <p>{{in.details}}</p>
+                <div class="div-h-3">
+                    <button [disabled]="(k!==undefined && id!==undefined)? true:false" (click)="k=i;id='in';edit(in)" class="edit"><i class="material-icons">edit</i></button>
+                    <button [disabled]="(k!==undefined && id!==undefined)? true:false" (click)="k=i;id='in';delete(in)" class="delete"><i class="material-icons">delete</i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="div-v-2" >
+        <div class="out" *ngFor="let out of entryout; index as i" [class.edit-on]="k===i && id==='out'">
+            <div class="div-h-1 out-color">
+                <label>{{toDate(out.date!)|date:'dd/MM/YY'}}</label>
+                <label>{{out.amount|currency:'INR'}}</label>
+                <label>{{out.type}}</label>
+            </div>
+            <div class="div-h-2">
+                <p>{{out.details}}</p>
+                <div class="div-h-3">
+                    <button [disabled]="(k!==undefined && id!==undefined)? true:false" (click)="k=i;id='out';edit(out)" class="edit"><i class="material-icons">edit</i></button>
+                    <button [disabled]="(k!==undefined && id!==undefined)? true:false" (click)="k=i;id='out';delete(out)" class="delete"><i class="material-icons">delete</i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

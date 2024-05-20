@@ -1,0 +1,85 @@
+<div class="base-h">
+    <div class="base-v-2">
+        <h3>Inflow :</h3>
+        <form #inflow="ngForm" (ngSubmit)="(inflow.form.valid)? submit(inflow.form) : nosubmit(inflow.form)">
+            <div class="div-v-1">
+                <div class="div-v-2">
+                    <label>Date* :</label>
+                    <input #indt="ngModel" type="date" required [class.invalid]="indt.touched && indt.invalid" name="indt" [(ngModel)]="entryin.date">
+                    <small class="error" *ngIf="indt.touched && indt.invalid">Date required.</small>
+                </div>
+                <div class="div-v-2">
+                    <label>Amount* :</label>
+                    <input #inamt="ngModel" type="number" min="0" step="0.01" required [class.invalid]="inamt.touched && inamt.invalid" name="inamt" [(ngModel)]="entryin.amount">
+                    <small class="error" *ngIf="inamt.errors?.['required'] && inamt.touched">Amount required.</small>
+                    <small class="error" *ngIf="inamt.errors?.['min'] || inamt.errors?.['step']">Enter a proper amount.</small>
+                </div>
+            </div>
+            <div class="div-v-1">
+                <div class="div-v-2">
+                    <label>Particulars :</label>
+                    <input #source="ngModel" type="text" maxlength="50" name="source" [(ngModel)]="entryin.details">
+                </div>
+                <div class="div-v-2">
+                    <label>Inflow Type :</label>
+                    <select #intype="ngModel" name="intype" [(ngModel)]="entryin.type">
+                        <option selected value="">Select Type</option>
+                        <option *ngFor="let t of type" value="{{t}}">{{t}}</option>
+                    </select>
+                </div>
+            </div>
+            <button class="button" type="submit">Log</button>
+        </form>
+        <br>
+        <h3>Outflow :</h3>
+        <form #outflow="ngForm" (ngSubmit)="(outflow.form.valid)? submit(outflow.form) : nosubmit(outflow.form)">
+            <div class="div-v-1">
+                <div class="div-v-2">
+                    <label>Date* :</label>
+                    <input #outdt="ngModel" type="date" required [class.invalid]="outdt.touched && outdt.invalid" name="outdt" [(ngModel)]="entryout.date">
+                    <small class="error" *ngIf="outdt.touched && outdt.invalid">Date required.</small>
+                </div>
+                <div class="div-v-2">
+                    <label>Amount* :</label>
+                    <input #outamt="ngModel" type="number" min="0" step="0.01" required [class.invalid]="outamt.touched && outamt.invalid" name="outamt"[(ngModel)]="entryout.amount">
+                    <small class="error" *ngIf="outamt.errors?.['required'] && outamt.touched">Amount required.</small>
+                    <small class="error" *ngIf="outamt.errors?.['min'] || outamt.errors?.['step']">Enter a proper amount.</small>
+                </div>
+            </div>
+            <div class="div-v-1">
+                <div class="div-v-2">
+                    <label>Particulars :</label>
+                    <input #expense="ngModel" type="text" maxlength="50" name="expense" [(ngModel)]="entryout.details">
+                </div>
+                <div class="div-v-2">
+                    <label>Expense Type :</label>
+                    <select #extype="ngModel" name="extype" [(ngModel)]="entryout.type">
+                        <option selected value="">Select Type</option>
+                        <option *ngFor="let t of type" value="{{t}}">{{t}}</option>
+                    </select>
+                </div>
+            </div>
+            <button class="button" type="submit">Log</button>
+        </form>
+    </div>
+    <div class="base-v-1">
+        <div class="div-h-1">
+            <div class="div-h-2">
+                <label>Net Ins:</label>
+                <input class="notify" type="number" [value]="netin" readonly>
+            </div>
+            <div class="div-h-2">
+                <label>Proceeds:</label>
+                <input [class.error]="result <= 0" [class.notify]="result > 0" type="number" [value]="result" readonly>
+            </div>
+            <div class="div-h-2">
+                <label>Net Outs:</label>
+                <input class="error" type="number" [value]="netout" readonly>
+            </div>  
+        </div>
+        <app-display #displayp (inevent)="inmod($event)" (outevent)="outmod($event)"></app-display>
+        <div class="pagination">
+            <!-- button for loading records in tracker -->
+        </div>
+    </div>
+</div>

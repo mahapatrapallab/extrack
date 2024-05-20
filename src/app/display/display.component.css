@@ -1,0 +1,144 @@
+.base-h{
+    background-color: darkslategrey;
+    border: 3px inset saddlebrown;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-content: stretch;
+    align-self: center;
+    height: 62vh;
+    width: 98%;
+}
+.div-v-1{
+    display: flex;
+    flex-direction: column;
+    align-content:flex-start;
+    align-items: flex-start;
+    width: 50%;
+    height: 100%;
+    overflow-y: hidden
+}
+.div-v-1:hover{
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+.div-v-2{
+    display: flex;
+    flex-direction: column;
+    align-content:flex-end;
+    align-items: flex-end;
+    width: 50%;
+    height: 100%;
+    overflow-y: hidden;
+}
+.div-v-2:hover{
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+.in{
+    background-color: lightgreen;
+    color: darkgreen;
+    border: 3px groove darkolivegreen;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    flex-wrap: wrap;
+    max-width:max-content;
+}
+.out{
+    background-color: lightpink;
+    color: maroon;
+    border: 3px groove firebrick;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    flex-wrap: wrap;
+    max-width:max-content;
+}
+.div-h-1{
+    color: black;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.div-h-2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.div-h-3{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+.in-color{
+    background-color:mediumspringgreen;
+}
+.out-color{
+    background-color: lightcoral;
+}
+label{
+    margin-right: 3px;
+    margin-left: 3px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    display: flex;
+    text-wrap: wrap;
+}
+p{
+    margin: 3px;
+}
+.edit{
+    padding: 0%;
+    margin-left: 3px;
+    margin-right: 3px;
+    background-color: midnightblue;
+    color: white;
+    border: 1px outset gold;
+    border-radius: 2px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    max-height: 13px;
+}
+.edit:hover{
+    background-color: steelblue;
+    border-color: darkgoldenrod;
+}
+.delete{
+    padding: 0%;
+    margin-left: 3px;
+    background-color: maroon;
+    color: white;
+    border: 1px outset gold;
+    border-radius: 2px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    max-height: 13px;
+}
+.delete:hover{
+    background-color: indianred;
+    border-color: darkgoldenrod;
+}
+i{
+    margin: 0%;
+    font-size: small;
+}
+.edit-on{
+    border-color: floralwhite;
+    border-width: 4px ;
+}

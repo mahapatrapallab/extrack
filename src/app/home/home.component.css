@@ -1,0 +1,24 @@
+div{
+    display: flex;
+    height: max-content;
+    width: 100vw;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+    color: white;
+    font-family:Arial, Helvetica, sans-serif;
+    
+}
+h1{
+    color: rgb(195, 130, 255);
+}
+ul{
+    list-style-type:square;
+}
+li{
+    color: rgb(219, 255, 90);
+}
+
+.imp{
+    color: coral;
+}

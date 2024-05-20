@@ -1,0 +1,20 @@
+<div class="base-v">
+    <form #login="ngForm" (ngSubmit)="(login.form.valid)?submit():nosubmit()">
+        <h2>Credentials</h2>
+        <div class="div-v">
+            <div class="div-h-2">
+                <label>UserName :</label>
+                <input #uname="ngModel" type="text" maxlength="15" name="username" required [(ngModel)]="user.username">
+            </div>
+            <div class="div-h-2">
+                <label>Password :</label>
+                <div style="text-wrap: nowrap;">
+                    <input #pass="ngModel" [type]="inputtype" maxlength="20" name="password" required [(ngModel)]="user.password">
+                    <i (click)="toggle()" class="material-icons vis" *ngIf="visible">visibility</i>
+                    <i (click)="toggle()" class="material-icons vis" *ngIf="!visible">visibility_off</i>
+                </div>
+            </div>
+        </div>
+        <button class="btn-1" type="submit">Login</button>
+    </form>
+</div>

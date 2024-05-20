@@ -1,0 +1,86 @@
+.base-v{
+    /* background-color: aliceblue; */
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-content:space-around;
+    align-items: center;
+    min-height: 93vh;
+    min-width: 100vw;
+}
+form{
+    border: 3px outset gold;
+    border-radius: 3%;
+    background-color:beige;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: center;
+    padding: 4vh;
+    min-height: 80vh;
+    min-width: 50vw;
+}
+h3{
+    margin: 0%;
+    background-color: lightgrey;
+    padding: 3px;
+    border: 2px groove gold;
+    border-radius: 3px;
+    text-wrap: wrap;
+}
+.div-v{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: flex-start;
+    /* width:; */
+}
+.div-h-1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.div-h-2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+}
+.vis{
+    cursor: default;
+    color: gray;
+    position: relative;
+    font-size: large;
+    top: 4px;
+    right: 20px;
+}
+.btn-1{
+    background-color: darkgrey;
+    border-color: gold;
+    border-radius: 3px;
+    font-size: larger;
+    cursor: pointer;
+}
+.btn-1:hover{
+    background-color: lightgrey;
+    border-color: darkgoldenrod;
+}
+.invalid{
+    border-color: crimson;
+    border-style:groove;
+    border-radius: 3px;
+}
+.error{
+    color: crimson;
+}
+.notify{
+    margin: 0%;
+    padding: 0%;
+    color:navy ;
+}
+

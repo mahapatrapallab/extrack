@@ -1,0 +1,66 @@
+<div class="base-v">
+    <form [formGroup]="details"  [inert]="disabled" (ngSubmit)="(details.valid)? submit() : nosubmit()">
+        <h3>Please provide details :</h3>
+        <div formGroupName="name" class="div-h-1">
+            <div class="div-v">
+                <label>First Name* :</label>
+                <input type="text" maxlength="15" [class.invalid]="fname?.touched && fname?.invalid" name="fname" formControlName="fname">
+                <small class="error" *ngIf="fname?.errors?.['required'] && fname?.touched">First name required.</small>
+                <small class="error" *ngIf="fname?.errors?.['pattern'] && fname?.touched">Only alphabets(atleast 2 required) are allowed.</small>
+            </div>
+            <div class="div-v">
+                
+                <label>Last Name* :</label>
+                <input type="text" maxlength="20" [class.invalid]="lname?.touched && lname?.invalid" name="lname" formControlName="lname">
+                <small class="error" *ngIf="lname?.errors?.['required'] && lname?.touched">Last name required.</small>
+                <small class="error" *ngIf="lname?.errors?.['pattern'] && lname?.touched">Only alphabets(atleast 2 required) are allowed.</small>
+            </div>
+        </div>
+        <label>Gender :</label>
+        <div class="div-h-1">
+            <div class="div-h-2" *ngFor="let g of genders">
+                <input type="radio" name="gender" value="{{g}}" formControlName="gender">
+                <label>{{': '+g}}</label>
+            </div>
+        </div>
+        <div class="div-h-2">
+            <label>D.O.B* :</label>
+            <input type="date" [class.invalid]="dob?.touched && dob?.invalid" name="dob" formControlName="dob">
+            <small class="error" *ngIf="dob?.errors?.['required'] && dob?.touched">Date of birth required.</small>
+            <small class="error" *ngIf="dob?.errors?.['dateerror']">D.O.B > current date.</small>
+        </div>
+        <div class="div-h-2">
+            <label>Email :</label>
+            <input type="email" maxlength="25" [class.invalid]="email?.invalid" name="email" formControlName="email">
+            <small class="error" *ngIf="email?.invalid">Provide email in proper format</small>
+        </div>
+        <div class="div-h-1">
+            <div class="div-v" style="margin-right: 10px;">
+                <label>UserName :</label>
+                <input (focus)="flag=true" (blur)="flag=false" readonly type="text" name="uname" formControlName="uname">
+                <small class="notify" *ngIf="flag">Auto-generated field.</small>
+            </div>
+            <div class="div-v">
+                <label>Password* :</label>
+                <div style="text-wrap: nowrap;">
+                    <input [type]="ptype" maxlength="20" [class.invalid]="pword?.invalid && pword?.touched" name="pword" formControlName="pword">
+                    <i (click)="ptoggle()" class="material-icons vis" *ngIf="pvisible">visibility</i>
+                    <i (click)="ptoggle()" class="material-icons vis" *ngIf="!pvisible">visibility_off</i>
+                </div>
+                <small class="error" *ngIf="pword?.invalid && pword?.touched">Password required.</small>
+            </div>
+            <div class="div-v">
+                <label>Confirm Password* :</label>
+                <div style="text-wrap: nowrap;">
+                    <input [type]="ctype" maxlength="20" [class.invalid]="cword?.invalid && cword?.touched" name="cword" formControlName="cword">
+                    <i (click)="ctoggle()" class="material-icons vis" *ngIf="cvisible">visibility</i>
+                    <i (click)="ctoggle()" class="material-icons vis" *ngIf="!cvisible">visibility_off</i>
+                </div>
+                <small class="error" *ngIf="cword?.invalid && cword?.touched">Confirm password</small>
+                <small class="error" *ngIf="details?.errors?.['mismatch']">Password mismatch.</small>
+            </div>
+        </div>
+        <button class="btn-1" type="submit">Register</button>
+    </form>
+</div>
+
