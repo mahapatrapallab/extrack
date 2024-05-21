@@ -36,16 +36,17 @@ router.post("/login",(req,res)=>{
         if(error)
             res.status(500).send({message:error});
         else{
-            if(result.length!==1)
+            if(result.length!==1||result[0].username!==req.body.username)
                 res.status(401).send({message:"Incorrect username"});
             else if(!crypt.compareSync(req.body.password,result[0].password))
                 res.status(401).send({message:"Incorrect password"});
             else{
                 let username = result[0].username;
                 let id = result[0].id;
-                currentusers[id]=username;
+                let key = random();
+                currentusers[id]={username:username,key:key};
                 
-                tokenid=jwt.sign(result[0].id.toString(),"LegendsNeverDie")
+                tokenid=jwt.sign(result[0].id.toString(),key);
                 res.status(200).send({token:tokenid});
             }
         }
@@ -65,5 +66,14 @@ router.post("/login",(req,res)=>{
             res.status(401).send({message:"Unidentified user"});
     });
 });
+
+function random(){
+    const src="ABCDEFGHIJKLMNOPQRSTabcdefghijklmnopqrst123456777890";
+    let key = "";
+    for(let i=0;i<10;i++){
+        key +=src.charAt(Math.floor(Math.random()*src.length));
+    }
+    return key;
+}
 
 module.exports = router;

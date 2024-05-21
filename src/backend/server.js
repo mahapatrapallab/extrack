@@ -6,6 +6,7 @@ const userroute = require("./routes/userroutes");
 const entryroute = require("./routes/entryroutes");
 const currentusers = require("./routes/currentusers");
 const activeuser = require("./routes/activeuser");
+const { log } = require("console");
 
 const port = 3200;
 
@@ -19,11 +20,14 @@ extrack.get("/",(req,res)=>res.send("server running ...."));
 extrack.use("/Extrack/User",userroute);
 
 extrack.use("/Extrack/Entry",(req,res,next)=>{
-    let token = jwt.verify(req.headers.authorization,"LegendsNeverDie");
-    if(currentusers[token]){
-        activeuser.id=token;
-        activeuser.username=currentusers[token];
-        next();
+    let id = jwt.decode(req.headers.authorization);
+    
+    if(currentusers[id]){
+        jwt.verify(req.headers.authorization,currentusers[id].key);
+        activeuser.id=id;
+        activeuser.username=currentusers[id].username;
+        // next();
+        res.status(200).send(activeuser);
     }
     else
         res.status(401).send({message:"Unidentified user"});
