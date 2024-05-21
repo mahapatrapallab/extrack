@@ -8,7 +8,6 @@ import { CommunicatorService } from '../services/communicator.service';
 import { ModalService } from '../services/modal.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { TokenHandlerService } from '../services/token-handler.service';
-import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -31,11 +30,14 @@ export class LoginComponent {
     let message="Please fill out all credentials properly.";
     this.modal.popupon("Alert!",[message]);
   }
+  disabled=false;
   submit(){
-    
+    this.disabled=true;
     this.comm.login(this.user).subscribe({next:(val)=>{
-      console.log(jwtDecode(val.token));
       this.jwthandler.settoken(val.token);
+      this.user.username="";
+      this.user.password="";
+      this.disabled=false;
       this.router.navigate([this.paths.tracker()]);
     },
     error:(err:HttpErrorResponse)=>{
@@ -44,6 +46,7 @@ export class LoginComponent {
           else
             msg=err.message;
       this.modal.popupon(err.statusText+"!",["Could not login :",msg,"You may retry"],true);
+      this.disabled=false;
     }
   });
   }

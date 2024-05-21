@@ -170,7 +170,12 @@ export class RegisterComponent {
       this.register();
   }
   redirect(id:string){
-    this.user = new User;
+    this.user.fullname=null;
+    this.user.gender=null;
+    this.user.dob=null;
+    this.user.email=null;
+    this.user.username="";
+    this.user.password="";
     this.router.navigate([this.paths.login()]);
   }
 }

@@ -44,8 +44,7 @@ router.post("/login",(req,res)=>{
                 let username = result[0].username;
                 let id = result[0].id;
                 currentusers[id]=username;
-                console.log(currentusers);
-
+                
                 tokenid=jwt.sign(result[0].id.toString(),"LegendsNeverDie")
                 res.status(200).send({token:tokenid});
             }

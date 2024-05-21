@@ -1,5 +1,5 @@
 <div class="base-v">
-    <form #login="ngForm" (ngSubmit)="(login.form.valid)?submit():nosubmit()">
+    <form #login="ngForm" [inert]="disabled" (ngSubmit)="(login.form.valid)?submit():nosubmit()">
         <h2>Credentials</h2>
         <div class="div-v">
             <div class="div-h-2">
