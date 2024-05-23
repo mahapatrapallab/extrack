@@ -59,7 +59,7 @@ router.post("/login",(req,res)=>{
             jwt.verify(req.headers.authorization,currentusers[id].key);
 
             currentusers.splice(id,1);
-            if(activeuser.id===token){
+            if(activeuser.id===id){
                 activeuser.id=null;
                 activeuser.username="";
             }
