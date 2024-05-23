@@ -26,8 +26,7 @@ extrack.use("/Extrack/Entry",(req,res,next)=>{
         jwt.verify(req.headers.authorization,currentusers[id].key);
         activeuser.id=id;
         activeuser.username=currentusers[id].username;
-        // next();
-        res.status(200).send(activeuser);
+        next();
     }
     else
         res.status(401).send({message:"Unidentified user"});

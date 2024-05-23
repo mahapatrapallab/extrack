@@ -53,8 +53,11 @@ router.post("/login",(req,res)=>{
     });
 
     router.delete("/logout",(req,res)=>{
-        let token = jwt.verify(req.headers.authorization,"LegendsNeverDie");
-        if(currentusers[token]){
+        let id = jwt.decode(req.headers.authorization);
+    
+        if(currentusers[id]){
+            jwt.verify(req.headers.authorization,currentusers[id].key);
+
             currentusers.splice(token,1);
             if(activeuser.id===token){
                 activeuser.id=null;
