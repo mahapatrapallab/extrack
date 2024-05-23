@@ -1,2 +1,2 @@
-const currentusers =[{username:"",key:""}];
+const currentusers =[{}];
 module.exports = currentusers;
