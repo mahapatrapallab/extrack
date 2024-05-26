@@ -9,9 +9,9 @@ class userrepo{
             
         con.query(qr,(err,res)=>{
             if(err)
-                return callback(err.code,null);
+                callback(err.code,null);
             else
-                return callback(null,res);
+                callback(null,res);
         });
 
     }
@@ -27,11 +27,11 @@ class userrepo{
             const into = "INSERT INTO extrack.users(id,fullname,gender,dob,email,username,password) VALUES(:id,:fullname,:gender,:dob,:email,:username,:password)";
             con.execute({namedPlaceholders:true,sql:into},user,(err,res)=>{
                 if(err)
-                    return callback(err.code,null);
+                    callback(err.code,null);
                 else{
                     con.execute(create1+user.username+"_in"+create2);
                     con.execute(create1+user.username+"_out"+create2);
-                    return callback(null,res.affectedRows);
+                    callback(null,res.affectedRows);
                 }
             });
         });

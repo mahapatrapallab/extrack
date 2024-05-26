@@ -8,9 +8,9 @@ class entryrepo{
         const from2=" WHERE id=?";
         con.execute(from1+table+from2,[entry.id],(err,res)=>{
             if(err)
-                return callback(err.code,null);
+                callback(err.code,null);
             else
-                return callback(null,res.affectedRows);
+                callback(null,res.affectedRows);
         });
     }
 
@@ -20,9 +20,9 @@ class entryrepo{
         const select2=" ORDER BY date DESC";
         con.query(select1+table+select2,(err,res)=>{
             if(err)
-                return callback(err.code,null);
+                callback(err.code,null);
             else
-                return callback(null,res);
+                callback(null,res);
 
         });
     }
@@ -33,9 +33,9 @@ class entryrepo{
         const into2="(id,date,amount,details,type) VALUES(:id,:date,:amount,:details,:type)"
         con.execute({namedPlaceholders:true,sql:into1+table+into2},entry,(err,res)=>{
             if(err)
-                return callback(err.code,null);
+                callback(err.code,null);
             else
-                return callback(null,res.insertId);
+                callback(null,res.insertId);
         });
 
     }
